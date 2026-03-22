@@ -18,14 +18,27 @@ module Types
       ids.map { |id| context.schema.object_from_id(id, context) }
     end
 
-    # Add root-level fields here.
-    # They will be entry points for queries on your schema.
+    field :activities, Types::ActivityType.connection_type, null: false,
+          description: "List all activities"
 
-    # TODO: remove me
-    field :test_field, String, null: false,
-      description: "An example field added by the generator"
-    def test_field
-      "Hello World!"
+    def activities
+      Activity.all.order(created_at: :desc)
+    end
+
+    field :activity, Types::ActivityType, null: true,
+          description: "Find an activity by ID" do
+      argument :id, ID, required: true
+    end
+
+    def activity(id:)
+      GlobalID.find(id)
+    end
+
+    field :my_assignments, Types::AssignmentType.connection_type, null: false,
+          description: "Current user's assignments"
+
+    def my_assignments
+      context[:current_user].assignments.order(created_at: :desc)
     end
   end
 end

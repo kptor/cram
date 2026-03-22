@@ -1,13 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginPage from "@/pages/LoginPage";
-
-function HomePage() {
-  return (
-    <div className="flex items-center justify-center min-h-screen">
-      <h1 className="text-4xl font-bold">cram</h1>
-    </div>
-  );
-}
+import HomePage from "@/pages/HomePage";
+import ActivityPage from "@/pages/ActivityPage";
 
 export default function App() {
   return (
@@ -15,6 +9,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/activity/:assignmentId" element={<ActivityPage />} />
       </Routes>
     </BrowserRouter>
   );

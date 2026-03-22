@@ -15,8 +15,8 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      "/graphql": "http://localhost:4000",
-      "/api": "http://localhost:4000",
+      "/graphql": process.env.API_URL || "http://localhost:4000",
+      "/api": process.env.API_URL || "http://localhost:4000",
     },
   },
 });

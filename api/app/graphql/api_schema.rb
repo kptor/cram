@@ -18,9 +18,16 @@ class ApiSchema < GraphQL::Schema
 
   # Union and Interface Resolution
   def self.resolve_type(abstract_type, obj, ctx)
-    # TODO: Implement this method
-    # to return the correct GraphQL object type for `obj`
-    raise(GraphQL::RequiredImplementationMissingError)
+    case obj
+    when Activity::MultipleChoice then Types::ActivityMultipleChoiceType
+    when Activity::Part then Types::ActivityPartType
+    when Activity then Types::ActivityType
+    when Assignment then Types::AssignmentType
+    when User then Types::UserType
+    else
+      raise GraphQL::RequiredImplementationMissingError,
+            "Cannot resolve type for #{obj.class}"
+    end
   end
 
   # Limit the size of incoming queries:

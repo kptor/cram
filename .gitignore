@@ -1,0 +1,30 @@
+# Rails
+/api/log/*
+/api/tmp/*
+/api/storage/*
+/api/.bundle
+/api/vendor/bundle
+/api/public/assets
+/api/.env
+/api/.env.*
+!api/.env.example
+
+# Node / React
+/web/node_modules
+/web/dist
+/web/.env
+/web/.env.*
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+docker-compose.override.yml

@@ -1,0 +1,41 @@
+source "https://rubygems.org"
+
+gem "rails", "~> 7.2.3"
+gem "pg", "~> 1.5"
+gem "puma", ">= 5.0"
+gem "rack-cors"
+gem "bootsnap", require: false
+gem "tzinfo-data", platforms: %i[windows jruby]
+
+# GraphQL
+gem "graphql", "~> 2.3"
+
+# Background jobs
+gem "sidekiq", "~> 7.0"
+gem "sidekiq-scheduler"
+
+# Auth
+gem "devise"
+gem "devise-jwt"
+
+# Serialization
+gem "oj"
+
+# Observability
+gem "sentry-ruby"
+gem "sentry-rails"
+gem "sentry-sidekiq"
+
+group :development, :test do
+  gem "debug", platforms: %i[mri windows], require: "debug/prelude"
+  gem "rspec-rails"
+  gem "factory_bot_rails"
+  gem "faker"
+  gem "dotenv-rails"
+end
+
+group :development do
+  gem "brakeman", require: false
+  gem "rubocop-rails-omakase", require: false
+  gem "annotate"
+end
